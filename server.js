@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var alertnode = require('alert-node');
 require('request-debug')(request);
+var port = process.env.PORT || 8080;
 var fetch = require('fetch');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
