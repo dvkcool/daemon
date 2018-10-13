@@ -391,7 +391,7 @@ try {
 
 
 //instantiate and connect to contract address via Abi
-var contract1 = new web3.eth.Contract(abi, contractaddress);
+var contract1 = new eth.Contract(abi, contractaddress);
 var contract2 = contract1.clone();
 alert("C2: "+contract2);
 var myAbi = web3.eth.contract(abi);
