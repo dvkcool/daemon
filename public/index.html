@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
     $(document).ready(function(){
@@ -136,28 +137,57 @@
       -->
       <div class="form-style-10">
       <h1>Create an hackathon now</h1>
-      <form>
-          <div class="section"><span>1</span>Hackathon basic info</div>
-          <div class="inner-wrap" align='left' >
-            <label>Hackathon name: <input type="text" name="hname" /></label>
-            <label>Version: <input type="text" name="version" /></label>
-          </div>
+      <div class="w3-container">
+  <div class="w3-bar w3-grey">
+    <button class="w3-bar-item w3-button tablink w3-blue" onclick="openMode(event,'Default')">Default Mode</button>
+    <button class="w3-bar-item w3-button tablink" onclick="openMode(event,'OContract')">Create Your own Contract</button>
+  </div>
 
-          <div class="section"><span>2</span>Email &amp; Phone</div>
-          <div class="inner-wrap" align='left'>
-              <label>Email Address <input type="email" name="field3" /></label>
-              <label>Phone Number <input type="text" name="field4" /></label>
-          </div>
+  <div id="Default" class="w3-container w3-border modes w3-animate-right">
+    <br><br>
+    <form>
+        <div class="section"><span>1</span>Hackathon basic info</div>
+        <div class="inner-wrap" align='left' >
+          <label>Hackathon name: <input type="text" name="hname" /></label>
+          <label>Version: <input type="text" name="version" /></label>
+        </div>
 
-          <div class="section"><span>3</span>Passwords</div>
-              <div class="inner-wrap" align='left'>
-              <label>Password <input type="password" name="field5" /></label>
-              <label>Confirm Password <input type="password" name="field6" /></label>
-          </div>
-          <div class="button-section">
-           <input type="submit" name="Sign Up" text="Submit"/>
-          </div>
-      </form>
+        <div class="section"><span>2</span>Email &amp; Phone</div>
+        <div class="inner-wrap" align='left'>
+            <label>Email Address <input type="email" name="field3" /></label>
+            <label>Phone Number <input type="text" name="field4" /></label>
+        </div>
+
+        <div class="section"><span>3</span>Passwords</div>
+            <div class="inner-wrap" align='left'>
+            <label>Password <input type="password" name="field5" /></label>
+            <label>Confirm Password <input type="password" name="field6" /></label>
+        </div>
+        <div class="button-section">
+         <input type="submit" name="Sign Up" text="Submit"/>
+        </div>
+    </form>
+  </div>
+
+  <div id="OContract" class="w3-container w3-border modes w3-animate-right" style="display:none">
+    <br><br>
+    <form>
+        <div class="section"><span>1</span>Custom Contract URL</div>
+        <div class="inner-wrap" align='left' >
+          <label>URL: <input type="text" name="hname" /></label>
+        </div>
+
+        <div class="section"><span>2</span>Our interface</div>
+        <div class="inner-wrap" align='left'>
+            <label>Link <a href="https://github.com/UrjaPawar/DaemonHack/blob/master/DaemonHack_interface.sol">https://github.com/UrjaPawar/DaemonHack/blob/master/DaemonHack_interface.sol</a></label>
+        </div>
+        <div class="button-section">
+         <input type="submit" name="Sign Up" text="Submit"/>
+        </div>
+    </form>
+  </div>
+</div>
+
       </div>
 
 <!--
@@ -215,11 +245,24 @@ tokens allocated
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCe7xQb1YWBLPDqFYAKE4G8_ysGyfuYyPg"></script>
 
     <!-- Theme JavaScript -->
     <script src="js/grayscale.min.js"></script>
+    <script>
 
+    function openMode(evt, Mode) {
+      var i, x, tablinks;
+      x = document.getElementsByClassName("modes");
+      for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < x.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
+      }
+      document.getElementById(Mode).style.display = "block";
+      evt.currentTarget.className += " w3-blue";
+    }
+    </script>
   </body>
 </html>
