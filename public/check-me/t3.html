@@ -7,7 +7,7 @@
 <title></title>
 
 <meta charset="utf-8" />
-
+<script type="text/javascript" src="web3.min.js"></script>
 </head>
 
 <body>
@@ -367,10 +367,12 @@ window.onload = function () {
 
 // check to see if user has metamask addon installed on his browser. check to make sure web3 is defined
 
-if (typeof web3 === 'undefined') {
+if (typeof web3 !== 'undefined') {
+window.web3=new Web3(web3.currentProvider);
 
-document.getElementById('metamask').innerHTML = 'You need <a href="https://metamask.io/">MetaMask</a> browser plugin to run this example'
-
+}
+else{
+  console.log("ssadcsdc");
 }
 
 // call the getvalue function here
@@ -390,16 +392,11 @@ try {
 
 
 
-//instantiate and connect to contract address via Abi
-var contract1 = new eth.Contract(abi, contractaddress);
-var contract2 = contract1.clone();
-alert("C2: "+contract2);
+
 var myAbi = web3.eth.contract(abi);
 
 var myfunction = myAbi.at(contractaddress);
 
-var contract2 = myAbi.clone();
-console.log("Here"+contract2);
 
 //call the get function of our SimpleStorage contract
 
