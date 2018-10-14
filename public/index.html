@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Form submit (removed) -->
     <script>
     $(document).ready(function(){
         $("form").submit(function(){
@@ -13,9 +14,21 @@
         });
     });
     </script>
+
+    <!-- Enable QR code scanner in participate -->
+    <script>
+    function scanhack(){
+      document.getElementById('scanpart').style.display="none";
+      document.getElementById('qrhackscan').innerHTML='<iframe src=\"participant\" width=80% height=500px></iframe>';
+    }
+
+    </script>
+
+    <!-- Trial of qr code gen simple -->
     <script>
     function getqr(){
       var addr = '0x8CCF9C4a7674D5784831b5E1237d9eC9Dddf9d7F';
+
       var d = document.getElementById('qr');
       var x = '<img src=\'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='+addr+'&choe=UTF-8\'>';
       d.innerHTML = x;
@@ -88,7 +101,7 @@
               <a class="page-scroll" href="#about">Register</a>
             </li>
             <li>
-              <a class="page-scroll" href="#generalRules">O Hackathon</a>
+              <a class="page-scroll" href="#participate">Participate</a>
             </li>
           </ul>
         </div>
@@ -228,14 +241,13 @@ tokens allocated
       </div>
     </section>
 
-    <section id="contact" class="darker-black container content-section text-center">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <h2>Team Thrivers, Hackinout</h2>
-          <p>Feel free to get in touch with us.</p>
-          <p><a href="https://daemonhacks.herokuapp.com/contact">https://daemonhacks.herokuapp.com/contact</a>
-          </p>
-        </div>
+    <section id="participate" class="darker-black container content-section text-center">
+      <div id="scan-mes">
+        <p>Scan QR code of hackathon to participate</p>
+        <div id="scanpart">
+        <input id="Scan-part" type="button" onclick="scanhack()" value="Scan" />
+      </div>
+        <div id="qrhackscan"></div>
       </div>
     </section>
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instascan</title>
+    <script type="text/javascript" src="../check-me/instascan.min.js"></script>
+  </head>
+  <body>
+
+    <video id="preview"></video>
+    <div id="scanned" style="display: none;">
+      <div id="hackqr"></div>
+      <p> Please confirm your registration in <div id="hackname"></div></p>
+      <input id="confReg" type="button" onclick="confirmreg()" value="Confirm Registration"/>
+    </div>
+    </div>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        let qrCode = content.toString();
+        let code_array = qrCode.split("ethereum:");
+
+        let ether_code = code_array[code_array.length - 1];
+        ether_code = ether_code.split("@")[0];
+        document.getElementById('preview').style.display="none";
+        var d = document.getElementById('hackqr');
+        var x = '<img src=\'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='+ether_code+'&choe=UTF-8\'>';
+        d.innerHTML = x;
+        document.getElementById('scanned').style.display="block";
+        console.log(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[cameras.length-1]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script>
+  </body>
+</html>
