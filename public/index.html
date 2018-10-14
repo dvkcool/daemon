@@ -13,6 +13,15 @@
         });
     });
     </script>
+    <script>
+    function getqr(){
+      var addr = '0x8CCF9C4a7674D5784831b5E1237d9eC9Dddf9d7F';
+      var d = document.getElementById('qr');
+      var x = '<img src=\'https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='+addr+'&choe=UTF-8\'>';
+      d.innerHTML = x;
+    }
+
+    </script>
     <title>Daemon</title>
 
     <!-- Bootstrap Core CSS -->
@@ -164,11 +173,12 @@
             <label>Confirm Password <input type="password" name="field6" /></label>
         </div>
         <div class="button-section">
-         <input type="submit" name="Sign Up" text="Submit"/>
+         <input id="Button1" type="button" onclick="getqr()" value="Add to Blockchain" />
         </div>
     </form>
   </div>
-
+<div id="qr">
+</div>
   <div id="OContract" class="w3-container w3-border modes w3-animate-right" style="display:none">
     <br><br>
     <form>
@@ -264,5 +274,6 @@ tokens allocated
       evt.currentTarget.className += " w3-blue";
     }
     </script>
+
   </body>
 </html>
